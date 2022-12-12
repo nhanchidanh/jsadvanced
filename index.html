@@ -9,71 +9,10 @@
 </head>
 
 <body>
-    IIFE: Imediately Invoked Function Expression
-    <br>
-    Hàm gọi ngay lập tức
-    <br>
-    nó cũng là arrow function
-    <br>
-    dung dau ; truoc IIFE
-    <br>
-    No la ham private, không có tính sử dụng lại
-    <br>
-    Thường dùng để viết thư viện
-
-
     <script>
-        // const callNow = function () {
-        //     console.log('NOW');
-        // }
-
-        // callNow()
-
-        // (function () {
-        //     console.log('NOW NOW');
-        // })()
-
-        // let fullName = 'Danh';
-
-        // (function (msg) {
-        //     console.log('Message: ', msg);
-        // })('Chao ban')
-
-
-        // const app = {
-        //     //để cars ở ngoài dễ bị dư thừa dữ liệu
-        //     cars: [],
-        //     add(car){
-        //         this.cars.push(car)
-        //     },
-        //     edit(index, car){
-        //         this.cars[index] = car
-        //     },
-        //     delete(index){
-        //         this.cars.splice(index, 1)
-        //     }
-        // }
-        const app = (function () {
-            //Private
-            const cars = []
-            return {
-                get(index){
-                    return cars[index]
-                },
-                add(car) {
-                    cars?.push(car)
-                },
-                edit(index, car) {
-                    cars[index] = car
-                },
-                delete(index) {
-                    cars.splice(index, 1)
-                }
-            }
-        })()
-
-
+        var massage = 'HỌC VỀ SCOPE';
     </script>
+    
 </body>
 
 </html>
