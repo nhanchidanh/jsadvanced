@@ -10,7 +10,35 @@
 
 <body>
     <script>
-        var massage = 'HỌC VỀ SCOPE';
+        var massage = 'HỌC VỀ CLOSURE';
+
+        function createCounter() {
+            let counter = 0;
+
+            function increase() {
+                return ++counter;
+            }
+
+            return increase;
+        }
+
+        const counter1 = createCounter()
+        console.log(counter1());
+// ====================================================
+        function createLogger(namespace) {
+            function logger(message) {
+                console.log(`[${namespace}] ${message}`);
+            }
+            return logger;
+        }
+
+        // Register.js
+
+        const infoLogger = createLogger('Info')
+
+        infoLogger('Bat dau gui mail');
+        infoLogger('Gui mail loi lan 1, thu gui lai...');
+        infoLogger('Gui mail thanh cong cho user xxx')
     </script>
     
 </body>
