@@ -9,29 +9,20 @@
 </head>
 
 <body>
-    - Strict mode: chế độ nghiêm ngặt để đảm bảo tính bảo mật và an toàn dữ liệu. Ngoài ra có công dụng như:
-    - Tránh quên từ khóa khai báo biến : var, let, const.
-    - Tránh trùng tên biến lẫn tới lỗi logic.
-    - Sử dụng bộ nhớ hiệu quả vì tránh tạo biến global
-    - không đặt tên biến, hàm bằng một số từ khóa nhạy cảm trùng với ngôn ngữ.
-    - khai báo hàm trong code block thì hàm sẽ thuộc phạm vi code block
+
+    Reference type: tham Chiếu
+    Tham trị và tham chiếu
+    trong js có 2 nhóm kiểu dữ liệu: nguyên thủy và phức tạp
+    Nhóm nguyên thủy: String, Number, Boolean, [BigInt, Symbol] ít dùng, undefine, null
+    Nhóm Phức tạp: Object, array, function
+
     <script>
-        "use strict"
-        var hero = "Doctor Strange"
-
-        function MultiverseOfMadness() {
-            var universe = 616
-        }
-
-        MultiverseOfMadness()
-
-        console.log(hero) //Output ?
-        console.log(universe) //Output ?
-
+        let a = 1;
+        let b = a;
+        a = 2;
+        console.log(b);
     </script>
 
-    Với use strict mode, biến universe chỉ được khai báo trong phạm vi của một function. Khi đó, nếu gọi đến biến đó ở
-    ngoài phạm vi khai báo sẽ dẫn đến lỗi.
 </body>
 
 </html>
