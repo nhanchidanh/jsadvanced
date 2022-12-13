@@ -9,38 +9,32 @@
 </head>
 
 <body>
+    Ở đây chúng ta có một IIFE (Biểu thức hàm được gọi ngay lập tức)
+
+    Biến tip sẽ là undefined vì var tip = 10 đã được khai báo bên trong hàm. Biến tip bên trong hàm được hoisted với giá
+    trị mặc định là undefined. Khi thực hiện tính toán với 1 biến có giá trị là undefined thì kết quả trả về sẽ là NaN.
+
+    Nếu chúng ta không khai báo var tip = 10 ở cuối hàm thì đáp án sẽ là "I have $100".
     <script>
-        var massage = 'HỌC VỀ CLOSURE';
+        var tip = 100;
 
-        function createCounter() {
-            let counter = 0;
+        (function () {
+            console.log("I have $" + husband());
 
-            function increase() {
-                return ++counter;
+            function wife() {
+                return tip * 2;
             }
 
-            return increase;
-        }
-
-        const counter1 = createCounter()
-        console.log(counter1());
-// ====================================================
-        function createLogger(namespace) {
-            function logger(message) {
-                console.log(`[${namespace}] ${message}`);
+            function husband() {
+                return wife() / 2;
             }
-            return logger;
-        }
 
-        // Register.js
+            var tip = 10;
+        })();
+// Output: ?
 
-        const infoLogger = createLogger('Info')
-
-        infoLogger('Bat dau gui mail');
-        infoLogger('Gui mail loi lan 1, thu gui lai...');
-        infoLogger('Gui mail thanh cong cho user xxx')
     </script>
-    
+
 </body>
 
 </html>
