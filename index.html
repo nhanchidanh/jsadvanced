@@ -9,20 +9,179 @@
 </head>
 
 <body>
-
-    Reference type: tham Chiếu
-    Tham trị và tham chiếu
-    trong js có 2 nhóm kiểu dữ liệu: nguyên thủy và phức tạp
-    Nhóm nguyên thủy: String, Number, Boolean, [BigInt, Symbol] ít dùng, undefine, null
-    Nhóm Phức tạp: Object, array, function
-
     <script>
-        let a = 1;
-        let b = a;
-        a = 2;
-        console.log(b);
-    </script>
+        var array = [1, 5, 7, 8, 9, 15];
 
+        //tra ve so le:
+        var obbArray = array.filter(function (item) {
+            return item % 2 == 1;
+        })
+
+        //Tra ve so chan
+        var evenArray = array.filter(function (item) {
+            return item % 2 == 0;
+        })
+
+        //Tim cac so >= 5
+        var newArray = array.filter(function (item) {
+            return item >= 5;
+        })
+
+        var chiaHetCho5 = array.filter(function (item) {
+            return item % 5 == 0;
+        })
+
+        //map
+        var lonHon5 = array.map(function (item) {
+            if (item > 5) {
+                return item + 1;
+            } else {
+                return item;
+            }
+        })
+
+        //Lấy ra mảng các phần tử từ vị trí 3 đến cuối
+        var layPhanTuThu3 = array.slice(3, array.length)
+
+        //Xóa phtu thứ 2 với số lượng 1 phtu và trả về phần tử đã xóa
+        var xoaPhanTu = array.splice(2, 1)
+
+        //push: thêm phần tử 32 vào mảng
+        var themPhanTu = array.push(7)
+
+        var x2Array = array.map(function (item) {
+            return item * 2;
+        })
+
+        console.log(obbArray);
+        console.log(evenArray);
+        console.log(newArray);
+        console.log(chiaHetCho5);
+        console.log(lonHon5);
+        console.log(layPhanTuThu3);
+        console.log(array);
+        console.log(array);
+        console.log(x2Array);
+        console.log('==============================');
+
+        var arr = [1, 8, 5, 2, 7, 6, 9, 2, 6];
+
+        var tangDan = arr.sort(function (item1, item2) {
+            if (item1 < item2) {
+                return -1;
+            }
+            if (item1 > item2) {
+                return 1;
+            }
+            if (item1 == item2) {
+                return 0;
+            }
+        });
+
+        var giamDan = arr.sort(function (item1, item2) {
+            if (item1 > item2) {
+                return -1;
+            }
+
+            if (item1 < item2) {
+                return 1;
+            }
+
+            if (item1 == item2) {
+                return 0;
+            }
+        })
+
+        console.log(tangDan);
+        console.log(giamDan);
+        console.log('=================================');
+
+
+
+        var arrObj = [{
+            name: 'Trung',
+            class: 'Nodemy01',
+            dateJoin: '05-02-2020',
+            age: 20
+        }, {
+            name: 'Phong',
+            class: 'Nodemy01',
+            dateJoin: '06-01-2020',
+            age: 19
+        }, {
+            name: 'Nam',
+            class: 'Nodemy02',
+            dateJoin: '25-01-2020',
+            age: 20
+        }]
+
+        //Sắp xếp theo tuổi tăng dần
+        tuoiTangDan = arrObj.sort(function (item1, item2) {
+            if (item1.age < item2.age) {
+                return -1;
+            }
+            if (item1.age > item2.age) {
+                return 1;
+            }
+            if (item1.age == item2.age) {
+                return 0;
+            }
+        })
+
+        function convertDateString(dateString) {
+            var arrDate = dateString.split('-');
+            // console.log(arrDate);
+            var date = arrDate[2] + '-' + arrDate[1] + '-' + arrDate[0];
+            return new Date(date);
+        }
+        // console.log(convertDateString('25-2-2020'));
+
+        var sorted = arrObj.sort(function (item1, item2) {
+            var date1 = convertDateString(item1.dateJoin);
+            var date2 = convertDateString(item2.dateJoin);
+
+            if (date1 < date2) {
+                return -1;
+            }
+            if (date1 > date2) {
+                return 1;
+            }
+            if (date1 == date2) {
+                return 0;
+            }
+        });
+
+        //dùng filter:học viên tham gia trước tháng 2
+        var truocThang2 = arrObj.filter(function (item) {
+            var date = convertDateString(item.dateJoin);
+            return date.getMonth() + 1 < 2;
+        })
+
+        var uppercaseName = arrObj.map(function (item) {
+            item.name = item.name.toUpperCase()
+            return item;
+        })
+
+        console.log(tuoiTangDan);
+        console.log(sorted);
+        console.log(truocThang2);
+        console.log(uppercaseName);
+        console.log('==============================');
+
+
+        var doan = {
+            name: 'Doan',
+            age: 22,
+            salary: 1000
+        }
+        var trung = {...doan};
+        trung.clone = true;
+        trung.name = 'Trung';
+
+        console.log(trung);
+        //clone doan -> trung
+        
+    </script>
 </body>
 
 </html>
