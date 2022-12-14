@@ -35,6 +35,7 @@
 
         console.log(isEmpty(schedule));
 
+        //tổng tất cả các khoản lương và lưu trữ trong biến tổng
         let salaries = {
             John: 100,
             Ann: 160,
@@ -42,10 +43,30 @@
         }
 
         var arr = Object.values(salaries)
-        var sum = arr.reduce(function (acc, cur,index, array) {
+        var sum = arr.reduce(function (acc, cur, index, array) {
             return acc + cur;
         })
         console.log(sum);
+
+        //nhân tất cả các thuộc tính số của obj với 2.
+        let menu = {
+            width: 200,
+            height: 300,
+            title: "My menu cafedev"
+        };
+
+        menuArr = Object.values(menu);
+        console.log(menuArr);
+        var rs = menuArr.map(function (item) {
+            if(!isNaN(item)){
+                
+                item = item*2;
+            }
+            return item;
+        });
+
+        console.log(rs);
+
     </script>
 </body>
 
