@@ -181,6 +181,39 @@
         console.log(trung);
         //clone doan -> trung
         
+
+        class Person {
+            constructor(name, age){
+                this.name = name;
+                this.age = age;
+            }
+
+            intro(){
+                console.log(this.name + this.age);
+            }
+        }
+
+        class Student extends Person{
+            constructor(name, age, univer, className){
+                super(name,age);
+                this.univer = univer;
+                this.className = className;
+            }
+        }
+
+        class Doctor extends Person{
+            constructor(name, age, job, salary){
+                super(name, age);
+                this.job = job;
+                this.salary = salary;
+            }
+        }
+
+        var student1 = new Student('Danh', 25, 'Nodemy', 'K5');
+        var doctor1 = new Doctor('Nguyen',22,'bac si','40tr');
+        console.log(student1);
+        student1.intro()
+        console.log(doctor1);
     </script>
 </body>
 
