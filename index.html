@@ -9,64 +9,34 @@
 </head>
 
 <body>
+    TH1:Trong phương thức
+    This: Trả về đối tượng mà nó thuộc về
+    Mẹo xác định this: đối tượng nào gọi(.) đến phương thức thì đối tượng đó là This.
+
+    TH2: Ngoài phương thức
+    THis: trả ra đối tượng global (window)
+    This trong hàm tạo là đối tượng được tạo
     <script>
-        /*
-        Tạo một đối tượng user trống.
-        Thêm thuộc tính name với giá trị David.
-        Thêm thuộc tính surname với giá trị Xuan.
-        Thay đổi giá trị của name thành Cafedev.
-        Xóa thuộc tính name khỏi đối tượng.
-        */
-        const person = {
-            name: 'David',
-            surname: 'Xuan',
-        }
-        person.name = 'Danh'
-        delete person.name;
-        console.log(person);
+        const iPhone7 = {
+            //THuoc tisnh
+            name: 'Ip7',
+            color: 'Pink',
+            weight: 300,
 
-        let schedule = {};
-        console.log(schedule);
-        console.log();
-
-        function isEmpty(obj) {
-            return Object.values(obj).length == 0
-        }
-
-        console.log(isEmpty(schedule));
-
-        //tổng tất cả các khoản lương và lưu trữ trong biến tổng
-        let salaries = {
-            John: 100,
-            Ann: 160,
-            Pete: 130
-        }
-
-        var arr = Object.values(salaries)
-        var sum = arr.reduce(function (acc, cur, index, array) {
-            return acc + cur;
-        })
-        console.log(sum);
-
-        //nhân tất cả các thuộc tính số của obj với 2.
-        let menu = {
-            width: 200,
-            height: 300,
-            title: "My menu cafedev"
-        };
-
-        menuArr = Object.values(menu);
-        console.log(menuArr);
-        var rs = menuArr.map(function (item) {
-            if(!isNaN(item)){
-                
-                item = item*2;
+            //mothod
+            takePhoto() {
+                // console.log('Take a photo');
+                console.log(this);
+            },
+            objChild: {
+                methodChild() {
+                    console.log(this);
+                }
             }
-            return item;
-        });
+        }
 
-        console.log(rs);
-
+        console.log(iPhone7.takePhoto());
+        console.log(iPhone7.objChild.methodChild());
     </script>
 </body>
 
