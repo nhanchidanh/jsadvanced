@@ -9,35 +9,83 @@
 </head>
 
 <body>
-    TH1:Trong phương thức
-    This: Trả về đối tượng mà nó thuộc về
-    Mẹo xác định this: đối tượng nào gọi(.) đến phương thức thì đối tượng đó là This.
+    Khi gán method qua một biến khác và gọi nó kh qua đối tượng nào thì đối tượng this trả về là window
+    bind(): gàng buộc/ nó giúp gàng buộc this cho func,obj mong muốn
+    Gàng buộc ở đây kh phải ghi đè mà là tạo mới method mới với this mới
+    <br>
+    <input class="form-control" type="text" name="" placeholder="Enter car name" id="input">
+    <button id="submit">Add</button>
+    <ul id="root">
 
-    TH2: Ngoài phương thức
-    THis: trả ra đối tượng global (window)
-    This trong hàm tạo là đối tượng được tạo
+    </ul>
     <script>
-        const iPhone7 = {
-            //THuoc tisnh
-            name: 'Ip7',
-            color: 'Pink',
-            weight: 300,
+        const $ = document.querySelector.bind(document);
+        const $$ = document.querySelectorAll.bind(document);
 
-            //mothod
-            takePhoto() {
-                // console.log('Take a photo');
-                console.log(this);
-            },
-            objChild: {
-                methodChild() {
-                    console.log(this);
+        //dùng IIFE để hàm chạy liền sau khi tạo và có phạm vi riêng kh ảnh hưởng đến biến toàn cục bên ngoài
+        const app = (() => {
+            const cars = ['BMW'];
+            const root = $('#root');
+            const input = $('#input');
+            const submit = $('#submit');
+            return {
+                add(car) {
+                    cars.push(car);
+                },
+                delete(index) {
+                    cars.splice(index, 1)
+                },
+                render() {
+                    const html = cars.map((car, index) =>
+                        `<li>${car} <span class="delete" data-index="${index}" >&times;</span></li>`
+                    ).join('');
+
+                    root.innerHTML = html;
+                },
+                handleDelete(e) {
+                    const deleteBtn = e.target.closest('.delete')
+                    //closest: kiểm tra xem chính nó hay cha của nó có class ... hay kh?
+                    //nếu đúng thì trả về element của nó / Không thì trả ra null(rỗng)
+
+                    console.log(deleteBtn);
+                    if (deleteBtn) {
+                        const index = deleteBtn.dataset.index;
+                        console.log(index);
+                        this.delete(index);
+                        this.render();
+                    }
+                },
+                init() {
+                    // const that = this; Nếu kh dùng cách này có thể dùng arrow func
+                    //arrow func kh có context nên nó sẽ lấy this của bên ngoài (app)
+
+                    //Handle DOM Events
+                    submit.onclick = () => {
+                        //Khi click vào sẽ lấy ra value của input
+                        const car = input.value ?? '';
+                        // console.log(car);
+                        if (car) {
+                            console.log(car);
+                            this.add(car);
+                            this.render();
+                        }
+
+                        //làm trong ô input sau khi add
+                        input.value = null;
+                        input.focus()
+                    }
+
+                    root.onclick = this.handleDelete.bind(this);//
+                    //bind(app) cũng thế vì cơ bản nó trỏ về app những kh dùng app vì sao này đổi tên thì phiền lắm
+                    this.render()
                 }
             }
-        }
+        })();
 
-        console.log(iPhone7.takePhoto());
-        console.log(iPhone7.objChild.methodChild());
+        app.init()
     </script>
 </body>
 
 </html>
+
+Delegete
